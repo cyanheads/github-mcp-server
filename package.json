@@ -1,0 +1,37 @@
+{
+  "name": "github-mcp-server",
+  "version": "1.0.0",
+  "description": "A Model Context Protocol server for GitHub API integration",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "Casey Hand @cyanheads",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyanheads/github-mcp-server"
+  },
+  "bin": {
+    "github-tools": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js",
+    "clean": "ts-node scripts/clean.ts",
+    "tree": "ts-node scripts/tree.ts",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.7.0",
+    "@octokit/rest": "^21.1.1",
+    "dotenv": "^16.4.7",
+    "zod": "^3.24.2",
+    "@types/node": "^22.13.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
