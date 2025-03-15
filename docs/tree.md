@@ -1,14 +1,12 @@
 # github-mcp-server - Directory Structure
 
-Generated on: 2025-03-15 00:50:24
+Generated on: 2025-03-15 01:41:12
 
 
 ```
 github-mcp-server
 ├── docs
-    ├── REFACTORING.md
     └── tree.md
-├── logs
 ├── scripts
     ├── clean.ts
     └── tree.ts
@@ -122,12 +120,15 @@ github-mcp-server
     │   └── operation.result.types.ts
     ├── utilities
     │   ├── error.handling.utility.ts
+    │   ├── promise.utility.ts
     │   ├── structured.logging.utility.ts
     │   ├── type.casting.utility.ts
     │   └── validation.utility.ts
     ├── application.entry.ts
     ├── index.ts
     └── types.ts
+├── .env.example
+├── LICENSE
 ├── package.json
 ├── README.md
 └── tsconfig.json
