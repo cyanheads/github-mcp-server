@@ -7,7 +7,7 @@
 [![Status](https://img.shields.io/badge/Status-Stable-green.svg)]()
 [![GitHub](https://img.shields.io/github/stars/cyanheads/github-mcp-server?style=social)](https://github.com/cyanheads/github-mcp-server)
 
-A Model Context Protocol (MCP) server that provides tools for interacting with the GitHub API. This server allows AI assistants to manage GitHub repositories, issues, pull requests, branches, files, and releases through a standardized interface.
+A Model Context Protocol (MCP) server that provides tools for interacting with the GitHub API. This server allows LLM agents manage GitHub repositories, issues, pull requests, branches, files, and releases through a standardized interface.
 
 ## Table of Contents
 
@@ -41,7 +41,13 @@ A Model Context Protocol (MCP) server that provides tools for interacting with t
 
 ## Overview
 
-GitHub MCP Server implements the [Model Context Protocol](https://github.com/anthropics/modelcontextprotocol) to provide AI assistants with the ability to perform GitHub operations programmatically. It acts as a bridge between AI models and the GitHub API, offering a set of well-defined tools that follow consistent patterns and handle authentication, validation, error handling, and rate limiting.
+github-mcp-server implements the Model Context Protocol (MCP), enabling standardized communication between LLMs and external systems through:
+
+- **Clients**: Claude Desktop, IDEs, and other MCP-compatible clients
+- **Servers**: Tools and resources for project management and collaboration
+- **LLM Agents**: AI models that leverage the ability to perform GitHub operations programmatically.
+
+It acts as a bridge between AI models and the GitHub API, offering a set of well-defined tools that follow consistent patterns and handle authentication, validation, error handling, and rate limiting.
 
 Key capabilities:
 
