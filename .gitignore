@@ -29,7 +29,6 @@ Thumbs.db
 *.d.ts.map
 *.d.ts
 !*.d.ts.template
-package-lock.json
 yarn.lock
 .pnp.js
 .pnp.cjs
