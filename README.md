@@ -201,7 +201,6 @@ Core Components:
    GITHUB_TOKEN=your_github_personal_access_token
    LOG_LEVEL=info
    SERVER_NAME=github-mcp-server
-   SERVER_VERSION=0.1.0
    ```
 
 4. Build the project:
@@ -243,8 +242,7 @@ Add to your MCP client settings:
       "env": {
         "GITHUB_TOKEN": "your_github_personal_access_token",
         "LOG_LEVEL": "info",
-        "SERVER_NAME": "github-mcp-server",
-        "SERVER_VERSION": "0.1.0"
+        "SERVER_NAME": "github-mcp-server"
       }
     }
   }
