@@ -104,11 +104,21 @@ export class Tool {
       if (this.validationSchema) {
         const validationResult = validateOperationInput(this.validationSchema, args);
         if (!validationResult.resultSuccessful) {
+          // Format the validation error in MCP-compatible format
+          let errorMessage = 'Input validation failed';
+          
+          if (validationResult.resultError?.errorContext?.validationErrors) {
+            const errors = validationResult.resultError.errorContext.validationErrors;
+            errorMessage = Array.isArray(errors) 
+              ? errors.map(e => `${e.path}: ${e.message}`).join(', ')
+              : 'Validation error';
+          }
+          
           return {
             content: [{ 
               type: 'text', 
-              text: JSON.stringify(validationResult.resultError, null, 2) 
-            }],
+              text: errorMessage
+            }], 
             isError: true
           };
         }
@@ -134,13 +144,13 @@ export class Tool {
         error: error instanceof Error ? error.message : String(error)
       });
       
-      const errorObj = ApplicationErrorHandlingUtility.wrapExceptionAsStandardizedError(
-        error,
-        `Tool ${this.name} execution failed`
-      );
+      // Create a simpler error message for MCP compatibility
+      const errorMessage = error instanceof Error 
+        ? error.message 
+        : `Tool ${this.name} execution failed: ${String(error)}`;
       
       return {
-        content: [{ type: 'text', text: JSON.stringify(errorObj, null, 2) }],
+        content: [{ type: 'text', text: errorMessage }],
         isError: true
       };
     }

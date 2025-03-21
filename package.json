@@ -28,10 +28,11 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.7.0",
     "@octokit/rest": "^21.1.1",
-    "dotenv": "^16.4.7",
-    "zod": "^3.24.2",
     "@types/node": "^22.13.10",
+    "dotenv": "^16.4.7",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "winston": "^3.17.0",
+    "zod": "^3.24.2"
   }
 }

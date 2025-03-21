@@ -119,9 +119,10 @@ class GitHubServer {
         });
         
         // Create appropriate error message based on category
+        const errorText = errorMessage.length > 200 ? errorMessage.substring(0, 200) + '...' : errorMessage;
         throw new McpError(
           ErrorCode.InternalError,
-          `${errorCategory} error: ${errorMessage}`
+          `${errorCategory} error: ${errorText}`
         );
       }
     });

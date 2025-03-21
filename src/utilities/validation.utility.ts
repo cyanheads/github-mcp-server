@@ -26,11 +26,17 @@ export function validateOperationInput<T>(
     return ApplicationErrorHandlingUtility.createSuccessResult(validatedData);
   } catch (validationError) {
     if (validationError instanceof z.ZodError) {
-      const formattedErrors = validationError.errors.map(err => ({
-        path: err.path.join('.'),
-        message: err.message
-      }));
-      
+      // Format the validation errors in a more user-friendly way
+      const formattedErrors = validationError.errors.map(err => {
+        // Use empty string for the root path
+        const pathStr = err.path.length === 0 ? '' : err.path.join('.');
+        
+        return {
+          path: pathStr,
+          message: err.message
+        };
+      });
+
       return ApplicationErrorHandlingUtility.createFailureResult(
         ApplicationErrorHandlingUtility.createValidationError(
           'Input validation failed',
@@ -185,6 +191,13 @@ export const updateFileSchema = z.object({
   content: z.string().min(1, "Content is required"),
   sha: z.string().optional(),
   branch: z.string().optional()
+  // Note: We're deliberately not including committer/author parameters here
+  // When left undefined, GitHub API will use the authenticated user's identity from the token
+  // This resolves the issue with local Git config vs GitHub identity mismatch
+  // 
+  // If you need to explicitly set committer/author, you'd define:
+  // committer: z.object({ name: z.string(), email: z.string() }).optional(),
+  // author: z.object({ name: z.string(), email: z.string() }).optional()
 });
 
 /**

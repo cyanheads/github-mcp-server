@@ -1,12 +1,13 @@
 # github-mcp-server - Directory Structure
 
-Generated on: 2025-03-15 01:41:12
+Generated on: 2025-03-21 07:01:52
 
 
 ```
 github-mcp-server
 ├── docs
     └── tree.md
+├── logs
 ├── scripts
     ├── clean.ts
     └── tree.ts
@@ -120,6 +121,7 @@ github-mcp-server
     │   └── operation.result.types.ts
     ├── utilities
     │   ├── error.handling.utility.ts
+    │   ├── logger.utility.ts
     │   ├── promise.utility.ts
     │   ├── structured.logging.utility.ts
     │   ├── type.casting.utility.ts
@@ -129,6 +131,7 @@ github-mcp-server
     └── types.ts
 ├── .env.example
 ├── LICENSE
+├── package-lock.json
 ├── package.json
 ├── README.md
 └── tsconfig.json

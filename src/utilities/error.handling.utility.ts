@@ -7,12 +7,12 @@
  */
 
 import {
-    ErrorCategoryType,
-    ErrorSeverityLevel,
-    StandardizedApplicationErrorObject
+  ErrorCategoryType,
+  ErrorSeverityLevel,
+  StandardizedApplicationErrorObject
 } from '../types/error.definition.types.js';
 import { OperationResult } from '../types/operation.result.types.js';
-import { StructuredLoggingUtility } from './structured.logging.utility.js';
+import { logger } from './logger.utility.js';
 
 /**
  * Utility class providing standardized error handling functions
@@ -45,12 +45,8 @@ export class ApplicationErrorHandlingUtility {
     };
     
     // Log the error based on its severity
-    if (StructuredLoggingUtility) {
-      StructuredLoggingUtility.recordErrorSeverity(
-        severity,
-        message,
-        { code, category, ...context }
-      );
+    if (logger) {
+      logger.logWithSeverity(severity, message, { code, category, ...context });
     }
     
     return errorObject;
@@ -69,6 +65,13 @@ export class ApplicationErrorHandlingUtility {
   ): StandardizedApplicationErrorObject {
     const errorMessage = exception instanceof Error ? exception.message : String(exception);
     const errorStack = exception instanceof Error ? exception.stack : undefined;
+
+    // Log the exception
+    if (exception instanceof Error) {
+      logger.exception(defaultMessage, exception);
+    } else {
+      logger.error(errorMessage || defaultMessage, { originalError: exception });
+    }
     
     return {
       errorMessage: errorMessage || defaultMessage,
@@ -122,6 +125,9 @@ export class ApplicationErrorHandlingUtility {
     message: string,
     context: Record<string, unknown> = {}
   ): StandardizedApplicationErrorObject {
+    // Log the GitHub API error
+    logger.error(`GitHub API Error: ${message}`, context);
+    
     return this.createStandardizedError(
       message,
       'GITHUB_API_ERROR',
@@ -142,6 +148,9 @@ export class ApplicationErrorHandlingUtility {
     message: string,
     context: Record<string, unknown> = {}
   ): StandardizedApplicationErrorObject {
+    // Log the validation error
+    logger.warn(`Validation Error: ${message}`, context);
+    
     return this.createStandardizedError(
       message,
       'VALIDATION_ERROR',
@@ -162,6 +171,9 @@ export class ApplicationErrorHandlingUtility {
     message: string,
     context: Record<string, unknown> = {}
   ): StandardizedApplicationErrorObject {
+    // Log the authentication error
+    logger.error(`Authentication Error: ${message}`, context);
+    
     return this.createStandardizedError(
       message,
       'AUTHENTICATION_ERROR',
@@ -182,6 +194,9 @@ export class ApplicationErrorHandlingUtility {
     message: string,
     context: Record<string, unknown> = {}
   ): StandardizedApplicationErrorObject {
+    // Log the system error
+    logger.error(`System Error: ${message}`, context);
+    
     return this.createStandardizedError(
       message,
       'SYSTEM_ERROR',
