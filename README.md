@@ -1,10 +1,18 @@
+# 🚨 This repository is deprecated. 🚨
+
+**Please use the official GitHub MCP server instead: [https://github.com/github/github-mcp-server](https://github.com/github/github-mcp-server?tab=readme-ov-file#remote-github-mcp-server)**
+
+# 🚨 This repository is deprecated. 🚨
+
+---
+
 # GitHub MCP Server
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)](https://www.typescriptlang.org/)
 [![Model Context Protocol](https://img.shields.io/badge/MCP-1.7.0-green.svg)](https://github.com/anthropics/modelcontextprotocol)
 [![Version](https://img.shields.io/badge/Version-1.0.2-blue.svg)]()
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Status](https://img.shields.io/badge/Status-Beta-orange.svg)]()
+[![Status](https://img.shields.io/badge/Status-Deprecated-red.svg)]()
 [![GitHub](https://img.shields.io/github/stars/cyanheads/github-mcp-server?style=social)](https://github.com/cyanheads/github-mcp-server)
 
 A Model Context Protocol (MCP) server that provides tools for interacting with the GitHub API. This server allows LLM agents manage GitHub repositories, issues, pull requests, branches, files, and releases through a standardized interface.
